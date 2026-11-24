@@ -1,0 +1,54 @@
+{
+  "name": "演示方案（请编辑，不代表真实规则解析）",
+  "version": "1.0",
+  "evaluation_target": "回答质量",
+  "original_rules": "# 示例：前台回答评测\n评测“待评回复”是否正确回应“用户问题”，以提供的公司前台知识库为事实依据。\n\n评分维度：\n- 正确性：5=正确；3=核心正确但小问题；1=明显错误；0=完全错误。\n- 完整性：5=覆盖关键要求；3=轻微遗漏；1=重大遗漏；0=未处理需求。\n- 忠实性：5=全部有证据；3=轻微无依据修饰；1=关键事实无依据；0=虚构执行成功。\n\n重大错误：捏造事实、声称已完成没有执行证据支持的预订、违背公司访客安全规则。\n存在重大错误直接不通过；否则全部维度至少3分才通过。\n知识库不包含的信息不得猜测，证据不足标记无法判断并转人工。\n裁判输出简短原因和引用证据，不输出推理过程。\n",
+  "concepts": [
+    {
+      "key": "request",
+      "description": "用户需求",
+      "required": true,
+      "source": "column",
+      "column_ids": [
+        "c2"
+      ],
+      "constant": "",
+      "confidence": 0.5,
+      "explanation": ""
+    },
+    {
+      "key": "answer",
+      "description": "被评测回答",
+      "required": true,
+      "source": "column",
+      "column_ids": [
+        "c3"
+      ],
+      "constant": "",
+      "confidence": 0.5,
+      "explanation": ""
+    }
+  ],
+  "dimensions": [
+    {
+      "key": "quality",
+      "name": "示例评分",
+      "description": "仅用于演示数据流",
+      "kind": "number",
+      "allowed_values": [
+        0.0,
+        1.0,
+        3.0,
+        5.0
+      ],
+      "rubric": "",
+      "required": true
+    }
+  ],
+  "rules": [],
+  "hard_fail_rules": [],
+  "pass_condition": "演示模式不产生真实通过结论",
+  "reference_required": false,
+  "judge_prompt": "",
+  "output_notes": "模拟结果不能用于模型排名或真实质量结论"
+}
